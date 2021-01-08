@@ -54,6 +54,9 @@ jobs:
         id: ns
       - run: echo "::set-outuput name=branch::$(echo ${GITHUB_REF#refs/heads/})"
         id: branch
+      - run:  echo  "${{ steps.branch.outputs.branch }}"
+      - run:  echo  ${{ steps.branch.outputs.branch }}
+      - run:  echo  "${ steps.branch.outputs.branch }"
       - name: Trigger infrastructure repo workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
