@@ -65,8 +65,7 @@ jobs:
         push: true
         context: .
         file: ./Dockerfile
-        repository: ${{ secrets.DOCKER_USERNAME }}/first-attempt-backend
-        tags: mattedamo26/first-attempt-backend:${{ github.sha }}, mattedamo26/first-attempt-backend:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/first-attempt-backend:${{ github.sha }}, ${{ secrets.DOCKER_USERNAME }}/first-attempt-backend:latest
 
   trigger-workflow:
     name: Trigger workflow
