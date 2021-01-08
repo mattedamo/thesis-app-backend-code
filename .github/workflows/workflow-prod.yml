@@ -15,6 +15,7 @@ jobs:
       uses: allenevans/set-env@v2.0.0
       with:
           NS: 'prod'
+          BRANCH: ${GITHUB_HEAD_REF}
 
 
     - name: Checkout code
@@ -56,6 +57,6 @@ jobs:
         with:
           workflow: Update-infrastructure-backend
           ref: master
-          inputs: '{"sha-tag" : "${{ github.sha }}", "code-branch" : "${{ GITHUB_HEAD_REF	 }}","overlays-dir" : "prod" }'
+          inputs: '{"sha-tag" : "${{ github.sha }}", "code-branch" : ${ BRANCH },"overlays-dir" : ${NS} }'
           repo: mattedamo/thesis-app-infrastructure
           token: ${{ secrets.TOKEN_GITHUB_DISPATCHER }}
