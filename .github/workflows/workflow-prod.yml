@@ -24,7 +24,7 @@ jobs:
       id: check_file
       uses: andstor/file-existence-action@v1
       with:
-        files: "file.yaml"
+        files: "file.yaml, Dockerfile"
     - name: File not exists
       if: steps.check_file.outputs.files_exists == 'false'
       run: |
