@@ -15,7 +15,6 @@ jobs:
       uses: allenevans/set-env@v2.0.0
       with:
           NS: 'prod'
-          BRANCH: ${GITHUB_HEAD_REF}
 
 
     - name: Checkout code
@@ -51,12 +50,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
-      
+      - run: echo ::set-output name=ns::prod
+        id: ns
+      - run: echo "::set-outuput name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+        id: branch
       - name: Trigger infrastructure repo workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Update-infrastructure-backend
           ref: master
-          inputs: '{"sha-tag" : "${{ github.sha }}", "code-branch" : ${ BRANCH },"overlays-dir" : ${NS} }'
+          inputs: '{"sha-tag" : "${{ github.sha }}", "code-branch" : "${{ steps.branch.outputs.branch }}","overlays-dir" : "${{steps.ns.outputs.ns}}" }'
           repo: mattedamo/thesis-app-infrastructure
           token: ${{ secrets.TOKEN_GITHUB_DISPATCHER }}
