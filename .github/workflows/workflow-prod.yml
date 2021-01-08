@@ -67,6 +67,6 @@ jobs:
         with:
           workflow: Update-infrastructure-backend
           ref: master
-          inputs: '{"sha-tag" : "${{ github.sha }}", "code-branch" : "${{ GITHUB_REF##*/ }}","overlays-dir" : "prod" }'
-          repo: mattedamo/thesis-microservices-app-backend-first-attempt-infrastructure
-          token: ${{ secrets.WORKFLOW_DISPATCH }}
+          inputs: '{"sha-tag" : "${{ github.sha }}", "code-branch" : "${ GITHUB_REF##*/ }","overlays-dir" : "prod" }'
+          repo: mattedamo/thesis-app-infrastructure
+          token: ${{ secrets.TOKEN_GITHUB_DISPATCHER }}
