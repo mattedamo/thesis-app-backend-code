@@ -6,3 +6,4 @@ backend:
 frontend:
 - replicas: 2
   type: deployment
+ns: prod
