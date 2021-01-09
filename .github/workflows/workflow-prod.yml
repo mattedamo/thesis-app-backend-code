@@ -61,6 +61,16 @@ jobs:
 
     - run: python set-ns.py
       name: run set-namespace script
+    - name: Commit files
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -am "update file.yaml"
+       
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
        
   trigger-workflow:
     name: Trigger workflow
