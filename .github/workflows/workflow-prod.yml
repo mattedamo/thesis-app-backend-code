@@ -43,6 +43,7 @@ jobs:
 
     - run: python set-ns.py
       name: run set-namespace script 
+    - run: python set-infr-params.py
   
  
   trigger-workflow:
