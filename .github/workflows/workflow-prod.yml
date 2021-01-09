@@ -51,12 +51,19 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
-      
+      - run: echo ::set-output name=ns::prod
+        id: ns
+      - run: echo "::set-outuput name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+        id: branch
+      - run:  echo  "${{ steps.branch.outputs.branch }}"
+      - run:  echo  ${{ steps.branch.outputs.branch }}
+      - run:  echo  "${ steps.branch.outputs.branch }"
       - name: Trigger infrastructure repo workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Update-infrastructure-backend
           ref: master
-          inputs: '{"sha-tag" : "${{ github.sha }}", "code-branch" : "${{ GITHUB_HEAD_REF	 }}","overlays-dir" : "prod" }'
+          #inputs: '{"sha-tag" : "${{ github.sha }}", "code-branch" : "${{ steps.branch.outputs.branch }}","overlays-dir" : "${{steps.ns.outputs.ns}}" }'
+          inputs: '{"sha-tag" : "${{ github.sha }}", "code-branch" : "master","overlays-dir" : "prod" }'
           repo: mattedamo/thesis-app-infrastructure
           token: ${{ secrets.TOKEN_GITHUB_DISPATCHER }}
