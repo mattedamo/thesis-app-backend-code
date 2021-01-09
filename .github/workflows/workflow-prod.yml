@@ -19,6 +19,10 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+          path: main
+    - run: cd main
+    - run: ls
 
     - name: Check existence file.yaml 
       id: check_file
@@ -33,6 +37,12 @@ jobs:
     - name: File exists
       if: steps.check_file.outputs.files_exists == 'true'
       run: echo "exists!"
+
+    - name: Checkout infrastructure-files
+      uses: actions/checkout@v2
+      with:
+          ref: infrastructure-branch
+          path: infr
 
     - name: Setup Python
       uses: actions/setup-python@v2
