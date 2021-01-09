@@ -1,0 +1,8 @@
+backend:
+- replicas: 30
+  type: deployment
+- port: 22
+  type: service
+frontend:
+- replicas: 2
+  type: deployment
