@@ -19,23 +19,18 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-          path: main
-    - run: |
-       cd main
-       ls
 
     - name: Check existence file.yaml 
       id: check_file
       uses: andstor/file-existence-action@v1
       with:
         files: "file.yaml, Dockerfile"
-    - name: File not exists
+    - name: Files don't exist
       if: steps.check_file.outputs.files_exists == 'false'
       run: |
         echo "failed"
         exit 1
-    - name: File exists
+    - name: Files exist
       if: steps.check_file.outputs.files_exists == 'true'
       run: echo "exists!"
 
@@ -44,6 +39,12 @@ jobs:
       with:
           ref: infrastructure-branch
           path: infr
+          
+          
+    - name: Delete if file.yaml and input-params.yaml exist in the infrastructure-branch
+      run: |
+        rm -rf /infr/file.yaml
+        rm -rf /input-params.yaml 
 
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -53,10 +54,14 @@ jobs:
       name: Install py dependencies
 
     - run: python set-ns.py
-      name: run set-namespace script 
+      name: run set-namespace script
+       
     - run: python set-infr-params.py
-  
- 
+      name: create set-infrastructure-parameters file
+    - name: Copy files into infr path
+      run: cp -t /infr file.yaml input-params.yaml
+    
+    - name: Add, commit and push files 
   trigger-workflow:
     name: Trigger workflow
     runs-on: ubuntu-latest
