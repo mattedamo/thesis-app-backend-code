@@ -7,19 +7,25 @@ def main():
         os.remove("input.params.yaml")
     
     open("./input_params.yaml", "x")
-    print(os.environ)
-    
-    """
-    if "ns" in input.keys():
-        ns = { "ns" : os.getenv("NS") }
-        input.update(ns)
-    else:
-        input["ns"] = os.getenv("NS")
-    print(os.getenv("NS"))
-    print(input)
-    with open("./file.yaml", "w") as file:
-                yaml.dump(input, file)
-    """
+    ref = os.getenv("GITHUB_REF")
+    tmp_list = ref.split("/")
+    branch = tmp_list[-1]
+    #devo settare il branch e il nome della kustomize folder
+    dic = {}
+    dic["branch"] = branch
 
+    if "master" in branch:
+        dic["kustomize-dir"] = "prod"
+    elif "release" in branch:
+        dic["kustomize-dir"] = "test"
+    elif "feature" in branch: 
+        dic["kustomize-dir"] = "dev"
+    else:
+        raise Exception('branch name not valid!')
+
+    with open("./input_params.yaml", "w") as file:
+                yaml.dump(dic, file)
+    
+    
 if __name__ == '__main__':
     main()
