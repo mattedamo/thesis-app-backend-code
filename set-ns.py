@@ -3,15 +3,22 @@ import yaml, os
 
 
 def main():
+    github_ref = os.getenv("GITHUB_REF")
+    list = github_ref.split("/")
+    if "master" in github_ref:
+        ns = "prod"
+    elif "releases" or "features" in github_ref:
+        ns = list[-2] + "-" + list[-1]
+    else:
+        raise Exception("Not valid branch name")
+
     with open("./file.yaml") as file:
         input = yaml.load(file, Loader=yaml.FullLoader)
     if "ns" in input.keys():
-        ns = { "ns" : os.getenv("NS") }
+        ns = { "ns" : ns }
         input.update(ns)
     else:
-        input["ns"] = os.getenv("NS")
-    print(os.getenv("NS"))
-    print(input)
+        input["ns"] = ns
     with open("./file.yaml", "w") as file:
                 yaml.dump(input, file)
 
