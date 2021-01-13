@@ -3,10 +3,10 @@ backend:
   type: deployment
 - port: 22
   type: service
-- type: deployment
-  secrets:
-    - MYSQL_ROOT_PASSWORD: password
-    - MYSQL_DATABASE: mybd
+- secrets:
+  - MYSQL_ROOT_PASSWORD: password
+  - MYSQL_DATABASE: mybd
+  type: deployment
 frontend:
 - replicas: 2
   type: deployment
