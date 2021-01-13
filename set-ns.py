@@ -4,11 +4,11 @@ import yaml, os
 
 def main():
     github_ref = os.getenv("GITHUB_REF")
-    list = github_ref.split("/")
+    #list = github_ref.split("/")
     if "master" in github_ref:
         ns = "prod"
     elif "releases" or "features" in github_ref:
-        ns = list[-2] + "-" + list[-1]
+        ns = github_ref
     else:
         raise Exception("Not valid branch name")
 

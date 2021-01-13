@@ -1,0 +1,6 @@
+value: 
+  - name: NAME
+    valueFrom:
+      secretKeyRef:
+        name: name
+        key: key
