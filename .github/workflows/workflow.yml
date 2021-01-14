@@ -82,7 +82,7 @@ jobs:
       - name: Trigger infrastructure repo workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: Update-infrastructure
+          workflow: update-infrastructure
           ref: master
           inputs: '{"docker-image" : "$${{ secrets.DOCKER_USERNAME }}/first-attempt-backend:${{ github.sha }}-${{steps.extract_branch.outputs.branch}}", "code-branch" : "${{steps.extract_branch.outputs.branch}}", "repo-name" : "${{ github.event.repository.name }}"}'
           repo: mattedamo/thesis-app-infrastructure
