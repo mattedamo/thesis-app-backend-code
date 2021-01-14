@@ -8,7 +8,6 @@ jobs:
   trigger-workflow:
     name: Trigger workflow
     runs-on: ubuntu-latest
-    needs: setup
     steps:
 
       - name: Extract branch name
