@@ -1,4 +1,4 @@
-name: WorkFlow-push
+name: WorkFlow-push-backend
 
 on:
   push:
@@ -108,6 +108,6 @@ jobs:
         with:
           workflow: update-infrastructure
           ref: master
-          inputs: '{"docker-image" : "${{ secrets.DOCKER_USERNAME }}/first-attempt-backend:${{ github.sha }}-${{steps.extract_branch.outputs.branch}}", "code-branch" : "${{steps.extract_branch.outputs.branch}}", "repo-name" : "${{ github.event.repository.name }}"}'
+          inputs: '{"docker-image-tag" : "{{ github.sha }}-${{steps.extract_branch.outputs.branch}}", "code-branch" : "${{steps.extract_branch.outputs.branch}}", "repo-name" : "${{ github.event.repository.name }}", "docker-frontend-repo" : "${{secrets.DOCKER_FRONTEND_REPO}},"docker-backend-repo" : "${{secrets.DOCKER_BACKEND_REPO}}", "tier" : "${{secrets.TIER"}}"}'
           repo: mattedamo/thesis-app-infrastructure
           token: ${{ secrets.TOKEN_GITHUB_DISPATCHER }}

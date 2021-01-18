@@ -11,3 +11,6 @@ frontend:
 - replicas: 2
   type: deployment
 ns: prod
+image:
+  frontend:
+    tag: nome_branch
