@@ -52,7 +52,7 @@ jobs:
         push: true
         context: .
         file: ./Dockerfile
-        tags: ${{ secrets.DOCKER_USERNAME }}/first-attempt-backend:${{ github.sha }}-${{steps.extract_branch.outputs.branch}}, ${{ secrets.DOCKER_USERNAME }}/first-attempt-backend:latest-${{steps.extract_branch.outputs.branch}}
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{secrets.DOCKER_BACKEND_REPO}}:${{ github.sha }}-${{steps.extract_branch.outputs.branch}}, ${{ secrets.DOCKER_USERNAME }}/${{secrets.DOCKER_BACKEND_REPO}}:latest-${{steps.extract_branch.outputs.branch}}
 
           
     - name: Setup Python
