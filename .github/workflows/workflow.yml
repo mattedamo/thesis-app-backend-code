@@ -35,6 +35,15 @@ jobs:
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       id: extract_branch
+   
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with: 
+        python-version: "3.x"
+    - run: pip install PyYAML
+      name: Install py dependencies
+    - run: python set-ns.py
+      name: run set-namespace script
       
     - name: Setup QEMU
       uses: docker/setup-qemu-action@v1
@@ -55,15 +64,6 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/${{secrets.DOCKER_BACKEND_REPO}}:${{ github.sha }}-${{steps.extract_branch.outputs.branch}}, ${{ secrets.DOCKER_USERNAME }}/${{secrets.DOCKER_BACKEND_REPO}}:latest-${{steps.extract_branch.outputs.branch}}
 
           
-    - name: Setup Python
-      uses: actions/setup-python@v2
-      with: 
-        python-version: "3.x"
-    - run: pip install PyYAML
-      name: Install py dependencies
-
-    - run: python set-ns.py
-      name: run set-namespace script
     - name: Add and commit changes
       uses: EndBug/add-and-commit@v6
       with:
