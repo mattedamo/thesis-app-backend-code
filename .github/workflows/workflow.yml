@@ -1,4 +1,4 @@
-name: WorkFlow-push-backend
+name: push-backend
 
 on:
   push:
@@ -42,8 +42,8 @@ jobs:
         python-version: "3.x"
     - run: pip install PyYAML
       name: Install py dependencies
-    - run: python set-ns.py
-      name: run set-namespace script
+    - run: validation-input-file.py
+      name: Validation of input file
       
     - name: Setup QEMU
       uses: docker/setup-qemu-action@v1

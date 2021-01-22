@@ -1,4 +1,4 @@
-name: WorkFlow-delete-branch
+name: delete-branch
 
 on:
   delete
@@ -27,7 +27,7 @@ jobs:
       - name: Trigger infrastructure repo workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: Delete-kustomize-dir
+          workflow: delete-kustomize-dir
           ref: master
           inputs: '{"code-branch" : "${{steps.extract_branch.outputs.branch}}"}'
           repo: mattedamo/thesis-app-infrastructure

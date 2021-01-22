@@ -13,14 +13,14 @@ def main():
     else:
         raise Exception("Not valid branch name")
 
-    with open("./file.yaml") as file:
+    with open("./input.yaml") as file:
         input = yaml.load(file, Loader=yaml.FullLoader)
     if "ns" in input.keys():
         if ns != input["ns"]:
-            raise Exception("You have to edit file.yaml before expect that it can be applied on kubernetes!")
+            raise Exception("You have to edit input.yaml before expect that it can be applied on kubernetes!")
     else:
         input["ns"] = ns
-    with open("./file.yaml", "w") as file:
+    with open("./input.yaml", "w") as file:
                 yaml.dump(input, file)
 
 if __name__ == '__main__':

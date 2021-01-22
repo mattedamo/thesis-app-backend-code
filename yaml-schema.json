@@ -1,0 +1,23 @@
+{
+    "$schema": "input-file/schema",
+    "$id": "input-file/schema",
+    "title": "Input Schema",
+    "description": "A schema to validate input file",
+    "type": "object",
+    "properties": {
+      "productId": {
+        "description": "The unique identifier for a product",
+        "type": "integer"
+      },
+      "productName": {
+        "description": "Name of the product",
+        "type": "string"
+      },
+      "price": {
+        "description": "The price of the product",
+        "type": "number",
+        "exclusiveMinimum": 0
+      }
+    },
+    "required": [ "productId", "productName", "price" ]
+  }

@@ -1,4 +1,4 @@
-name: WorkFlow-push-hotfix
+name: push-hotfix
 
 on:
   push:
