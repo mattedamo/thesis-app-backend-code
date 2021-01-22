@@ -67,8 +67,8 @@ jobs:
     - name: Add and commit changes
       uses: EndBug/add-and-commit@v6
       with:
-        add: "file.yaml"
-        message: 'updated yaml.file'
+        add: "input.yaml"
+        message: 'updated input.yaml'
   
   update-develop-branch:
     name: Update Develop Branch

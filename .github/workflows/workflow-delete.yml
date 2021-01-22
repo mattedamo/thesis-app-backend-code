@@ -29,6 +29,6 @@ jobs:
         with:
           workflow: delete-kustomize-dir
           ref: master
-          inputs: '{"code-branch" : "${{steps.extract_branch.outputs.branch}}"}'
+          inputs: '{"code-branch" : "${{steps.extract_branch.outputs.branch}}", "tier" : "${{sectets.TIER}}"}'
           repo: mattedamo/thesis-app-infrastructure
           token: ${{ secrets.TOKEN_GITHUB_DISPATCHER }}
