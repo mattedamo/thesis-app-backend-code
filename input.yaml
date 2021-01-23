@@ -13,6 +13,6 @@ frontend:
 ns: prod
 image:
   frontend:
-    tag: nome_branch
+    tag: master
 clusters: 
   - in-cluster
