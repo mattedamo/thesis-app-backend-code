@@ -17,11 +17,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Check existence file.yaml 
+    - name: Check existence input.yaml and Dockerfile 
       id: check_file
       uses: andstor/file-existence-action@v1
       with:
-        files: "file.yaml, Dockerfile"
+        files: "input.yaml, Dockerfile"
     - name: Files don't exist
       if: steps.check_file.outputs.files_exists == 'false'
       run: |
