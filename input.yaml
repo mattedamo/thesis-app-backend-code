@@ -10,7 +10,7 @@ backend:
 frontend:
 - replicas: 2
   type: deployment
-ns: prod
+branch: master
 image:
   frontend:
     tag: master
