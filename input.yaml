@@ -10,7 +10,9 @@ backend:
 frontend:
 - replicas: 2
   type: deployment
-ns: prot
+ns: prod
 image:
   frontend:
     tag: nome_branch
+clusters: 
+  - in-cluster
