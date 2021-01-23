@@ -6,7 +6,8 @@ def main():
     if "branch" not in input.keys():
         raise Exception("You have to insert the correct namespace manually into the input yaml file, "+ 
                         "to confirm that you have made the actual changes in it!")
-    if input["branch"] != os.environ["GITHUB_REF"]:
+        
+    if input["branch"] != (os.environ["GITHUB_REF"].split("/")[-1] || os.environ["GITHUB_REF"].split("/")[-2]+"/"+os.environ["GITHUB_REF"].split("/")[-1] :
         raise Exception("You have to insert the correct namespace manually into the input yaml file, "+ 
                         "to confirm that you have made the actual changes in it!")
     if "clusters" not in input.keys():
