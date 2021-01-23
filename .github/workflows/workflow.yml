@@ -42,7 +42,7 @@ jobs:
         python-version: "3.x"
     - run: pip install PyYAML
       name: Install py dependencies
-    - run: validation-input-file.py
+    - run: python validation-input-file.py
       name: Validation of input file
       
     - name: Setup QEMU
