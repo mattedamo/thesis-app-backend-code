@@ -13,6 +13,10 @@ frontend:
 branch: master
 image:
   frontend:
-    tag: master
+    tag: custom-tag
+  backend:
+    tag: custom-tag
 clusters: 
   - in-cluster
+  - second-cluter
+  - third-cluster
