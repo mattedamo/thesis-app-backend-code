@@ -27,7 +27,7 @@ jobs:
       - name: Trigger infrastructure repo workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: delete-kustomize-dir
+         # workflow: delete-kustomize-dir
           ref: master
           inputs: '{"code-branch" : "${{steps.extract_branch.outputs.branch}}", "tier" : "${{sectets.TIER}}"}'
           repo: mattedamo/thesis-app-infrastructure
