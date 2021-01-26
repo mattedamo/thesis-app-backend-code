@@ -123,16 +123,11 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    #- run: |
-    #      git checkout develop
-    #      git rebase ${{steps.extract_branch.outputs.branch}}
-    #      git push origin develop
-    - name: Commit & Push changes
-      uses: actions-js/push@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        message: automatic merge from master
-        branch: develop     
+    - run: |
+          git checkout develop
+          git rebase ${{steps.extract_branch.outputs.branch}}
+          git push origin develop
+  
   trigger-workflow:
     name: Trigger workflow
     runs-on: ubuntu-latest
