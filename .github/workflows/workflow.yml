@@ -127,10 +127,12 @@ jobs:
     #      git checkout develop
     #      git rebase ${{steps.extract_branch.outputs.branch}}
     #      git push origin develop
-    - uses: EndBug/add-and-commit@v7
+    - name: Commit & Push changes
+      uses: actions-js/push@master
       with:
-        branch: develop
-        message: Automatic merge, cause push on master      
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        message: automatic merge from master
+        branch: develop     
   trigger-workflow:
     name: Trigger workflow
     runs-on: ubuntu-latest
