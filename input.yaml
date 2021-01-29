@@ -4,9 +4,9 @@ backend:
 - port: 8080
   type: service
 frontend:
-- replicas: 3
+- replicas: 2
   type: deployment
-- port: 8000
+- port: 80
   type: service
 db:
 - type: deployment
@@ -14,13 +14,11 @@ db:
   - MYSQL_ROOT_PASSWORD: password
   - MYSQL_DATABASE: mybd  
 
-branch: features/first-feature
+branch: master
 image:
+  frontend:
+    tag: custom-tag
   backend:
     tag: custom-tag
-  frontend:
-    tag: latest-prod
 clusters: 
   - in-cluster
-  - second-cluster
-  - third-cluster
