@@ -14,7 +14,7 @@ db:
   - MYSQL_ROOT_PASSWORD: password
   - MYSQL_DATABASE: mybd  
 
-branch: features/first-feature
+branch: features/second-feature
 image:
   backend:
     tag: custom-tag
@@ -22,3 +22,5 @@ image:
     tag: latest-prod
 clusters: 
   - in-cluster
+  - second-cluster
+  - third-cluster
