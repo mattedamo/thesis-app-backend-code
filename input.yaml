@@ -16,7 +16,6 @@ db:
 
 branch: features/first-feature
 image:
-  frontend:
   backend:
     tag: custom-tag
 clusters: 
