@@ -1,15 +1,19 @@
 backend:
-- replicas: 30
+- replicas: 1
   type: deployment
-- port: 22
+- port: 8080
   type: service
-- secrets:
-  - MYSQL_ROOT_PASSWORD: password
-  - MYSQL_DATABASE: mybd
-  type: deployment
 frontend:
 - replicas: 2
   type: deployment
+- port: 80
+  type: service
+db:
+- type: deployment
+  secrets:
+  - MYSQL_ROOT_PASSWORD: password
+  - MYSQL_DATABASE: mybd  
+
 branch: master
 image:
   frontend:
@@ -19,4 +23,3 @@ image:
 clusters: 
   - in-cluster
   - second-cluter
-  - third-cluster
