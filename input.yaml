@@ -18,9 +18,5 @@ branch: features/first-feature
 image:
   backend:
     tag: custom-tag
-  frontend:
-    tag: latest-prod
 clusters: 
   - in-cluster
-  - second-cluster
-  - third-cluster
