@@ -15,17 +15,12 @@ jobs:
           github.event.ref
           , 'releases')    
     steps:
-      - run: env
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
       
       - name: Trigger infrastructure repo workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: delete-kustomize-dir
           ref: master
-          inputs: '{"code-branch" : "${{steps.extract_branch.outputs.branch}}", "tier" : "${{secrets.TIER}}"}'
+          inputs: '{"code-branch" : "${{ github.event.ref }}", "tier" : "${{secrets.TIER}}"}'
           repo: ${{ github.repository_owner }}/${{secrets.INFRASTRUCTURE_REPO}}
           token: ${{ secrets.PAT_TOKEN }}
