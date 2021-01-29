@@ -3,7 +3,6 @@ name: push-hotfix
 on:
   push:
     branches: 
-      - 'hot-fix/**'
       - 'hotfix/**'
 
 jobs:
