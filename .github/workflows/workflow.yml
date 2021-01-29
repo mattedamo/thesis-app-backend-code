@@ -109,7 +109,7 @@ jobs:
     needs: setup
     if: contains(
           github.event.ref
-          , 'features')
+          , 'releases')
     steps:
 
     - name: Extract branch name
