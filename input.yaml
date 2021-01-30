@@ -14,10 +14,8 @@ db:
   - MYSQL_ROOT_PASSWORD: password
   - MYSQL_DATABASE: mybd  
 
-branch: master
+branch: features/matteo-button
 image:
-  frontend:
-    tag: custom-tag
   backend:
     tag: custom-tag
 clusters: 
