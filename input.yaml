@@ -14,7 +14,7 @@ db:
   - MYSQL_ROOT_PASSWORD: password
   - MYSQL_DATABASE: mybd  
 
-branch: master
+branch: releases/new-rel
 image:
   frontend:
     tag: custom-tag
