@@ -1,15 +1,16 @@
 name: push-hotfix
 
 on:
-  push:
-    branches: 
-      - 'hotfix/**'
+  pull_request:
+    types: closed
 
 jobs:
   
   update-develop-branch:
     name: Update Develop Branch
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+        && contains(github.head_ref, 'hotfix') 
   
     steps:
 
@@ -25,6 +26,6 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git checkout develop
-          git rebase ${{steps.extract_branch.outputs.branch}}
+          git rebase master
           git push origin develop
     
