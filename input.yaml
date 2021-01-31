@@ -4,7 +4,7 @@ backend:
 - port: 8080
   type: service
 frontend:
-- replicas: 2
+- replicas: 1
   type: deployment
 - port: 80
   type: service
@@ -12,7 +12,7 @@ db:
 - type: deployment
   secrets:
   - MYSQL_ROOT_PASSWORD: password
-  - MYSQL_DATABASE: mybd  
+  - MYSQL_DATABASE: thesisAppMariadb  
 
 branch: releases/new-rel
 image:
