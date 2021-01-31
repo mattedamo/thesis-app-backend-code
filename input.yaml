@@ -11,7 +11,7 @@ frontend:
 db:
 - type: deployment
   secrets:
-  - MYSQL_ROOT_PASSWORD: password
+  - MYSQL_ROOT_PASSWORD: passw
   - MYSQL_DATABASE: thesisAppMariadb 
 
 branch: master
