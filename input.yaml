@@ -14,7 +14,7 @@ db:
   - MYSQL_ROOT_PASSWORD: password
   - MYSQL_DATABASE: mybd  
 
-branch: features/matteo-button
+branch: master
 image:
   backend:
     tag: custom-tag
