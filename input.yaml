@@ -14,7 +14,7 @@ db:
   - MYSQL_ROOT_PASSWORD: password
   - MYSQL_DATABASE: thesisAppMariadb  
 
-branch: releases/new-rel
+branch: master
 image:
   frontend:
     tag: custom-tag
