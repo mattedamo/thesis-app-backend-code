@@ -12,7 +12,7 @@ db:
 - type: deployment
   secrets:
   - MYSQL_ROOT_PASSWORD: password
-  - MYSQL_DATABASE: thesisAppMariadb  
+  - MYSQL_DATABASE: thesisAppMariadb 
 
 branch: master
 image:
