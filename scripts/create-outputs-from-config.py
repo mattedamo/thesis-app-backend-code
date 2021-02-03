@@ -7,8 +7,7 @@ def main():
         config = yaml.load(file, Loader=yaml.FullLoader)
     if k in ["docker-backend-repo", "docker-frontend-repo", "infrastructure-repo", "backup-input-repo"]:
         if k not in config.keys():
-            #raise Exception(k + " not present in config file, add it")
-            sys.exit(k + "not present in config file, add it")
+            raise Exception(k + " not present in config file, add it")
         else:
             print(config[k])
     elif k == "tier":
