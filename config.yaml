@@ -3,6 +3,6 @@ docker-frontend-repo: first-attempt-frontend
 infrastructure-repo: thesis-app-infrastructure
 backup-input-repo: thesis-backup-input-files
 tier: backend
-default-input-prod: false
+default-input-prod: true
 default-input-release: false
 default-input-feature: false
