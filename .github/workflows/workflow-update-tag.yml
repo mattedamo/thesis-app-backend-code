@@ -17,7 +17,7 @@ jobs:
           
       - name: Extract tag
         shell: bash
-        run: echo "##[set-output name=new-tag;]$(declare -a list=$(git tag); python3 generate-tag.py ${list[*]})"
+        run: echo "##[set-output name=new-tag;]$(declare -a list=$(git tag); python scripts/generate-tag.py ${list[*]})"
         id: extract_tag
 
     

@@ -29,8 +29,8 @@ jobs:
 
     - name: Create outputs from config file
       run: |
-        echo "##[set-output name=infrastructure-repo;]$(python create-outputs-from-config.py infrastructure-repo)"
-        echo "##[set-output name=tier;]$(python create-outputs-from-config.py tier)"
+        echo "##[set-output name=infrastructure-repo;]$(python scripts/create-outputs-from-config.py infrastructure-repo)"
+        echo "##[set-output name=tier;]$(python scripts/create-outputs-from-config.py tier)"
       id: from-config
       
     - name: Trigger infrastructure repo workflow

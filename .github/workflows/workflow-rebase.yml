@@ -26,7 +26,7 @@ jobs:
 
     - name: Extract branch where to rebase
       shell: bash
-      run: echo "##[set-output name=branch;]$(python3 rebase-in-releases.py $(git branch -r) )"
+      run: echo "##[set-output name=branch;]$(python scripts/rebase-in-releases.py $(git branch -r) )"
       id: extract_branch
     
     - run: |

@@ -54,18 +54,18 @@ jobs:
 
     - name: Create outputs from config file
       run: |
-        echo "##[set-output name=docker-backend-repo;]$(python create-outputs-from-config.py docker-backend-repo)"
-        echo "##[set-output name=docker-frontend-repo;]$(python create-outputs-from-config.py docker-frontend-repo)"
-        echo "##[set-output name=infrastructure-repo;]$(python create-outputs-from-config.py infrastructure-repo)"
-        echo "##[set-output name=tier;]$(python create-outputs-from-config.py tier)"
-        echo "##[set-output name=backup-input-repo;]$(python create-outputs-from-config.py backup-input-repo)"
+        echo "##[set-output name=docker-backend-repo;]$(python scripts/create-outputs-from-config.py docker-backend-repo)"
+        echo "##[set-output name=docker-frontend-repo;]$(python scripts/create-outputs-from-config.py docker-frontend-repo)"
+        echo "##[set-output name=infrastructure-repo;]$(python scripts/create-outputs-from-config.py infrastructure-repo)"
+        echo "##[set-output name=tier;]$(python scripts/create-outputs-from-config.py tier)"
+        echo "##[set-output name=backup-input-repo;]$(python scripts/create-outputs-from-config.py backup-input-repo)"
         var=${{steps.extract-branch.outputs.branch}}
         if grep -q "master" <<< "$var"; then
-        echo "##[set-output name=default-input;]$(python create-outputs-from-config.py default-input-prod)"
+        echo "##[set-output name=default-input;]$(python scripts/create-outputs-from-config.py default-input-prod)"
         elif grep -q "features" <<< "$var"; then
-        echo "##[set-output name=default-input;]$(python create-outputs-from-config.py default-input-release)"
+        echo "##[set-output name=default-input;]$(python scripts/create-outputs-from-config.py default-input-release)"
         elif grep -q "releases" <<< "$var"; then
-        echo "##[set-output name=default-input-flag;]$(python create-outputs-from-config.py default-input-feature)"
+        echo "##[set-output name=default-input-flag;]$(python scripts/create-outputs-from-config.py default-input-feature)"
         fi
       id: from-config
     
@@ -74,7 +74,7 @@ jobs:
       with:
           DEFAULT_INPUT_FLAG: ${{ steps.from-config.outputs.default-input}}
    
-    - run: python validation-input-file.py
+    - run: python scripts/validation-input-file.py
       name: Validation of input file
       
     - name: Setup QEMU
