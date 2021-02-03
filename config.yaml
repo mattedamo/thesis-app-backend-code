@@ -1,6 +1,6 @@
 docker-backend-repo: first-attempt-backend
 docker-frontend-repo: first-attempt-frontend
-infrastructure-code: thesis-app-infrastructure
+infrastructure-repo: thesis-app-infrastructure
 backup-input-repo: thesis-backup-input-files
 tier: backend
 default-input-prod: false
