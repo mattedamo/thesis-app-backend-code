@@ -35,7 +35,7 @@ jobs:
     
     - name: Extract branch name for image tag
       run: |
-        var="${{steps.extract-branch.outputs.branch}}""
+        var="${{steps.extract_branch.outputs.branch}}"
         if grep -q "master" <<< "$var"; then
         echo "##[set-output name=branch-tag;]$(echo prod)"
         elif grep -q "features" <<< "$var"; then
@@ -59,7 +59,7 @@ jobs:
         echo "##[set-output name=infrastructure-repo;]$(python scripts/create-outputs-from-config.py infrastructure-repo)"
         echo "##[set-output name=tier;]$(python scripts/create-outputs-from-config.py tier)"
         echo "##[set-output name=backup-input-repo;]$(python scripts/create-outputs-from-config.py backup-input-repo)"
-        var="${{steps.extract-branch.outputs.branch}}"
+        var="${{steps.extract_branch.outputs.branch}}"
         if grep -q "master" <<< "$var"; then
         echo "##[set-output name=default-input;]$(python scripts/create-outputs-from-config.py default-input-prod)"
         elif grep -q "features" <<< "$var"; then
