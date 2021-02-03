@@ -1,4 +1,4 @@
-import yaml, os
+import yaml, os, sys
 
 def main():
     github_ref = os.environ["GITHUB_REF"]
@@ -13,10 +13,10 @@ def main():
             branch_list = github_ref.split("/")
             branch = branch_list[-2]+"/"+branch_list[-1]
         if "branch" not in input.keys():
-            raise Exception("You have to insert the branch key-value in the input file")
+            sys.exit("You have to insert the branch key-value in the input file")
         if branch != input["branch"]:
-            raise Exception("You have to insert manually the correct branch name in the input file")
+            sys.exit("You have to insert manually the correct branch name in the input file")
     if "clusters" not in input.keys():
-        raise Exception("You have to specific the cluster name(s) where you want to deploy the application!") 
+        sys.exit("You have to specific the cluster name(s) where you want to deploy the application!") 
 if __name__ == '__main__':
     main()
