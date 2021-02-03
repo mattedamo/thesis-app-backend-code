@@ -8,6 +8,7 @@ def main():
     if k in ["docker-backend-repo", "docker-frontend-repo", "infrastructure-repo", "backup-input-repo"]:
         if k not in config.keys():
             raise Exception(k + " not present in config file, add it")
+            exit(1)
         else:
             print(config[k])
     elif k == "tier":
