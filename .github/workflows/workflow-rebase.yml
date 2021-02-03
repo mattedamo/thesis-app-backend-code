@@ -41,14 +41,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         &&  contains(github.head_ref, 'releases') 
-  
     steps:
 
     - name: checkout code
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    
     
     - run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
