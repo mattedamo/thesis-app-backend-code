@@ -15,7 +15,7 @@ def main():
     optional_elements = ["default-input-prod", "default-input-feature", "default-input-feature"]
     for e in optional_elements:
         if e in config.keys():
-            if config["e"] not in [True, False]:
+            if config[e] not in [True, False]:
                 sys.exit(e + " has a not valid value. It must be a boolean value.")
 
 if __name__ == '__main__':
