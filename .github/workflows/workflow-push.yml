@@ -101,7 +101,7 @@ jobs:
       with:
         workflow: update-infrastructure
         ref: master
-        inputs: '{"docker-image" : "${{ github.sha }}-${{steps.branch-tag.outputs.branch-tag}}", "code-branch" : "${{steps.extract_branch.outputs.branch}}", "code-repo" : "${{ github.event.repository.name }}", "docker-frontend-repo" : "${{steps.from-config.outputs.docker-frontend-repo}}","docker-backend-repo" : "${{steps.from-config.outputs.docker-backend-repo}}", "tier" : "${{steps.from-config.outputs.tier}}", "default-input-flag" : "${{ steps.from-config-outputs.default-input-flag }}", "backup-input-repo" : "${{ steps.from-config-outputs.backup-input-repo }}"}'
+        inputs: '{"docker-image" : "${{ github.sha }}-${{steps.branch-tag.outputs.branch-tag}}", "code-branch" : "${{steps.extract_branch.outputs.branch}}", "code-repo" : "${{ github.event.repository.name }}", "docker-frontend-repo" : "${{steps.from-config.outputs.docker-frontend-repo}}","docker-backend-repo" : "${{steps.from-config.outputs.docker-backend-repo}}", "tier" : "${{steps.from-config.outputs.tier}}", "default-input-flag" : "${{ steps.from-config.outputs.default-input-flag }}", "backup-input-repo" : "${{ steps.from-config.outputs.backup-input-repo }}"}'
         repo: ${{ github.repository_owner }}/${{ steps.from-config.outputs.infrastructure-repo }}
         token: ${{ secrets.PAT_TOKEN }}
       
