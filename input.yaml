@@ -21,4 +21,4 @@ image:
   backend:
     tag: custom-tag
 clusters: 
-  - second-cluster
+  - in-cluster
