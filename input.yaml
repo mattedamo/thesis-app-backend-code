@@ -1,3 +1,4 @@
+#Presente nel BRANCH "features/f1" del FRONTEND repo
 backend:
 - replicas: 1
   type: deployment
@@ -13,12 +14,12 @@ db:
   secrets:
   - MYSQL_ROOT_PASSWORD: password
   - MYSQL_DATABASE: thesisAppMariadb 
-
-branch: master
+branch: features/F1
 image:
   frontend:
-    tag: custom-tag
+    tag: latest-features-f1 
   backend:
-    tag: custom-tag
+    tag: latest-prod
 clusters: 
-  - in-cluster
+  - first-cluster
+  - second-cluster
